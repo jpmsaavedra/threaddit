@@ -1,10 +1,10 @@
 import { getAuthSession } from '@/lib/auth'
 import { db } from '@/lib/db'
-import formatDistanceToNow from 'date-fns/formatDistanceToNow/index.js'
 import { notFound } from 'next/navigation'
 import { format } from 'date-fns'
-import { userAgent } from 'next/server'
 import SubscribeLeaveToggle from '@/components/SubscribeLeaveToggle'
+import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/Button'
 
 const Layout = async ({
   children,
@@ -96,6 +96,15 @@ const Layout = async ({
                   subredditName={subreddit.name}
                 />
               ) : null}
+
+              <Link
+                className={buttonVariants({
+                  variant: 'outline',
+                  className: 'w-full mb-6',
+                })}
+                href={`r/${slug}/submit`}>
+                Create Post
+              </Link>
             </dl>
           </div>
         </div>
